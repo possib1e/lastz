@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Last Z 攻略导航站</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d9e0ea;
+      --panel: #ffffff;
+      --blue: #2166e8;
+      --green: #16803c;
+      --amber: #b86b00;
+      --red: #b42318;
+      --purple: #6941c6;
+      --shadow: 0 16px 44px rgba(17,24,39,.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { max-width: 1180px; margin: 0 auto; padding: 18px 14px 42px; }
+    header {
+      background: #111827;
+      color: #fff;
+      border-radius: 8px;
+      padding: 24px 18px;
+      margin-bottom: 14px;
+    }
+    h1 { margin: 0; font-size: 34px; letter-spacing: 0; }
+    .sub { margin-top: 8px; color: #cbd5e1; max-width: 820px; }
+    .quick {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+    .quick a {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      font-weight: 800;
+      color: #344054;
+    }
+    .quick a:hover { border-color: var(--blue); color: var(--blue); }
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin: 18px 0 10px;
+      border-bottom: 2px solid #111827;
+      padding-bottom: 8px;
+    }
+    h2 { margin: 0; font-size: 22px; }
+    .hint { color: var(--muted); font-size: 14px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 210px;
+    }
+    .bar { height: 8px; background: var(--blue); }
+    .bar.green { background: var(--green); }
+    .bar.amber { background: var(--amber); }
+    .bar.red { background: var(--red); }
+    .bar.purple { background: var(--purple); }
+    .bar.dark { background: #344054; }
+    .body { padding: 14px; }
+    .title { font-size: 22px; font-weight: 900; margin-bottom: 7px; }
+    .desc { color: #475467; font-size: 15px; }
+    .meta { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 12px; }
+    .pill {
+      font-size: 12px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      border-radius: 7px;
+      padding: 4px 7px;
+      color: #475467;
+    }
+    .actions {
+      border-top: 1px solid var(--line);
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .open {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #111827;
+      color: #fff;
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .file {
+      font-size: 12px;
+      color: var(--muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .wide { grid-column: span 2; }
+    .note {
+      margin-top: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      color: #344054;
+    }
+    .code-panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .code-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .code-table th,
+    .code-table td {
+      padding: 10px 11px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    .code-table th {
+      background: #111827;
+      color: #fff;
+      font-size: 13px;
+    }
+    .code {
+      font-family: Consolas, "Segoe UI Mono", monospace;
+      font-weight: 900;
+      color: #111827;
+      word-break: break-all;
+    }
+    .status {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .ok { background: #dcfce7; color: #166534; }
+    .claimed { background: #e0e7ff; color: #3730a3; }
+    .limit { background: #fef3c7; color: #92400e; }
+    .expired { background: #fee2e2; color: #991b1b; }
+    .pending { background: #f1f5f9; color: #475569; }
+    .code-foot { padding: 10px 12px; color: var(--muted); font-size: 13px; background: #f8fafc; }
+    footer { padding: 24px 0 0; color: var(--muted); font-size: 13px; text-align: center; }
+    @media (max-width: 980px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .quick { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .page { padding: 10px 8px 24px; }
+      h1 { font-size: 27px; }
+      .grid { grid-template-columns: 1fr; }
+      .wide { grid-column: auto; }
+      .quick { grid-template-columns: repeat(2, 1fr); }
+      .card { min-height: auto; }
+      .title { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Last Z 攻略导航站</h1>
+      <div class="sub">由 724 服务器 SSBH 六梵天 Jason9527 整理分享，适合活跃轻氪玩家。资料来自盟友分享、Facebook 群组、Discord 群组、官网等。</div>
+    </header>
+
+    <nav class="quick">
+      <a href="#learn">英语单词</a>
+      <a href="#guide">游戏攻略</a>
+      <a href="#codes">礼品码</a>
+      <a href="#hq">总部升级</a>
+      <a href="#tech">科技解锁</a>
+      <a href="#duel">联盟对决</a>
+      <a href="#mail">联盟邮件</a>
+    </nav>
+
+    <div class="section-title" id="learn"><h2>英语单词</h2><span class="hint">合并去重版</span></div>
+    <div class="grid">
+      <article class="card wide">
+        <div class="bar purple"></div>
+        <div class="body">
+          <div class="title">Last Z 游戏英语词库</div>
+          <div class="desc">已合并官网资源词库、扩展游戏词库、SSBH 联盟邮件术语和官网英雄/科技补充术语，按英文词条去重，保留中文、音标、使用说明和发音按钮。</div>
+          <div class="meta"><span class="pill">471 个词条</span><span class="pill">已去重</span><span class="pill">可搜索</span><span class="pill">可发音</span></div>
+        </div>
+        <div class="actions"><a class="open" href="lastz-vocabulary.html">打开</a><span class="file">lastz-vocabulary.html</span></div>
+      </article>
+    </div>
+
+    <div class="section-title" id="guide"><h2>游戏攻略</h2><span class="hint">网页</span></div>
+    <div class="grid two">
+      <article class="card" id="mail">
+        <div class="bar green"></div>
+        <div class="body">
+          <div class="title">SSBH 联盟邮件分享</div>
+          <div class="desc">感谢 Mr Settle down、npc包子、lin agriculture 的邮件教学分享。内容按总部发展、科研、联盟对决、商店钻石、杀敌日、橙色避难者、农场号等分类整理。</div>
+          <div class="meta"><span class="pill">盟友教学</span><span class="pill">分类整理</span><span class="pill">中文执行版</span></div>
+        </div>
+        <div class="actions"><a class="open" href="lastz_alliance_mail_guide.html">打开</a><span class="file">lastz_alliance_mail_guide.html</span></div>
+      </article>
+      <article class="card">
+        <div class="bar green"></div>
+        <div class="body">
+          <div class="title">其他网上攻略分享</div>
+          <div class="desc">整理 Facebook 群组、Discord 群组、官网资料和网上玩家经验，方便按主题查阅账号定位、日常安排、科研、英雄、活动与轻氪建议。</div>
+          <div class="meta"><span class="pill">网上攻略</span><span class="pill">官网资料</span><span class="pill">玩家经验</span></div>
+        </div>
+        <div class="actions"><a class="open" href="lastz-strategy-hub.html">打开</a><span class="file">lastz-strategy-hub.html</span></div>
+      </article>
+    </div>
+
+    <div class="section-title" id="codes"><h2>礼品码</h2><span class="hint">已收集码表</span></div>
+    <div class="code-panel">
+      <table class="code-table">
+        <thead>
+          <tr>
+            <th>礼品码</th>
+            <th>状态</th>
+            <th>来源</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="code"><strong>LASTZBUILDINGTIME</strong></td><td><span class="status ok"><strong>可领取</strong></span></td><td>群友提供 / 兑换记录</td><td><strong>新游戏 ID 优先尝试；2026-05-25 测试：1 个账号领取成功，另外账号显示已领取。</strong></td></tr>
+          <tr><td class="code"><strong>VICTORY280K4UT</strong></td><td><span class="status ok"><strong>可领取</strong></span></td><td>Discord</td><td><strong>监控页面仍可见，新游戏 ID 优先尝试；如账号已用过会显示已领取。</strong></td></tr>
+          <tr><td class="code">WELCOMELZDC</td><td><span class="status claimed">已领取</span></td><td>Discord</td><td>老账号可能已领取；新游戏 ID 可尝试。</td></tr>
+          <tr><td class="code">WELCOMELZFB</td><td><span class="status claimed">已领取</span></td><td>Facebook 官方页</td><td>兑换记录返回 code already exchanged；新游戏 ID 可尝试。</td></tr>
+          <tr><td class="code">WELCOMELZX</td><td><span class="status claimed">已领取</span></td><td>X / 社群</td><td>老账号可能已领取；新游戏 ID 可尝试。</td></tr>
+          <tr><td class="code">CHIHUYFC</td><td><span class="status claimed">已领取</span></td><td>社群收集</td><td>老账号可能已领取；新游戏 ID 可尝试。</td></tr>
+          <tr><td class="code">SCAVENGEDSUPPLIES</td><td><span class="status claimed">已领取</span></td><td>Discord / 兑换记录</td><td>3 个账号均返回 code already exchanged；新游戏 ID 可尝试。</td></tr>
+          <tr><td class="code">THANKU250KCOM</td><td><span class="status limit">领取次数超过</span></td><td>社群收集</td><td>全服领取次数超过，不能再领取。</td></tr>
+          <tr><td class="code">FIRSTHUSTLE1L5</td><td><span class="status limit">领取次数超过</span></td><td>Discord</td><td>兑换接口返回 count limit，不能再领取。</td></tr>
+          <tr><td class="code">MAYWEMARCHON</td><td><span class="status limit">领取次数超过</span></td><td>Discord / 兑换记录</td><td>兑换接口返回 count limit，不能再领取。</td></tr>
+          <tr><td class="code">2026ISCOMING</td><td><span class="status expired">时间失效</span></td><td>社群收集</td><td>新年活动码，按时间判断已过活动期。</td></tr>
+          <tr><td class="code">LASTZXMAS2425</td><td><span class="status expired">时间失效</span></td><td>社群收集</td><td>圣诞活动码，按时间判断已过活动期。</td></tr>
+          <tr><td class="code">APR2026REWARD</td><td><span class="status expired">时间失效</span></td><td>Discord</td><td>2026 年 4 月活动码，按时间判断已过活动期。</td></tr>
+          <tr><td class="code">APRIL2026LUCK</td><td><span class="status expired">时间失效</span></td><td>Discord</td><td>2026 年 4 月活动码，按时间判断已过活动期。</td></tr>
+          <tr><td class="code">FLOWER2026JOY</td><td><span class="status expired">时间失效</span></td><td>Discord</td><td>春季活动码，按时间判断已过活动期。</td></tr>
+          <tr><td class="code">FOUR2026BONUS</td><td><span class="status expired">时间失效</span></td><td>Discord</td><td>2026 年 4 月活动码，按时间判断已过活动期。</td></tr>
+          <tr><td class="code">SPRING2026GIFT</td><td><span class="status expired">时间失效</span></td><td>Discord</td><td>春季活动码，按时间判断已过活动期。</td></tr>
+        </tbody>
+      </table>
+      <div class="code-foot">排序规则：可领取和已领取排在前面，因为新游戏 ID 可能还能继续领取；领取次数超过和时间失效排在后面，基本不能再领取。可领取码已加粗突出。</div>
+    </div>
+
+    <div class="section-title" id="hq"><h2>总部升级条件</h2><span class="hint">图片</span></div>
+    <div class="grid">
+      <article class="card">
+        <div class="bar red"></div>
+        <div class="body">
+          <div class="title">总部升级条件中文</div>
+          <div class="desc">中文整理版，总部升级前置建筑条件，适合手机保存查看。</div>
+          <div class="meta"><span class="pill">PNG</span><span class="pill">中文</span></div>
+        </div>
+        <div class="actions"><a class="open" href="总部升级条件中文.png">打开</a><span class="file">总部升级条件中文.png</span></div>
+      </article>
+      <article class="card">
+        <div class="bar red"></div>
+        <div class="body">
+          <div class="title">总部升级条件英文</div>
+          <div class="desc">英文图表版，可作为英文环境或外服玩家参考。</div>
+          <div class="meta"><span class="pill">JPG</span><span class="pill">英文</span></div>
+        </div>
+        <div class="actions"><a class="open" href="总部升级条件英文.jpg">打开</a><span class="file">总部升级条件英文.jpg</span></div>
+      </article>
+    </div>
+
+    <div class="section-title" id="tech"><h2>科技解锁条件</h2><span class="hint">网页 + 图片</span></div>
+    <div class="grid">
+      <article class="card">
+        <div class="bar blue"></div>
+        <div class="body">
+          <div class="title">手机版科技总览</div>
+          <div class="desc">把官网科技总览重新排成发展主线、军事主线、联盟分支、特训/S2，手机查看更舒服。</div>
+          <div class="meta"><span class="pill">网页</span><span class="pill">手机友好</span></div>
+        </div>
+        <div class="actions"><a class="open" href="lastz_technology_mobile.html">打开</a><span class="file">lastz_technology_mobile.html</span></div>
+      </article>
+      <article class="card">
+        <div class="bar blue"></div>
+        <div class="body">
+          <div class="title">科技解锁条件图片</div>
+          <div class="desc">科技总览图片版，可保存或分享。</div>
+          <div class="meta"><span class="pill">PNG</span><span class="pill">图片</span></div>
+        </div>
+        <div class="actions"><a class="open" href="科技解锁条件.png">打开</a><span class="file">科技解锁条件.png</span></div>
+      </article>
+    </div>
+
+    <div class="section-title" id="duel"><h2>联盟对决 VS 全面备战</h2><span class="hint">网页 + 图片</span></div>
+    <div class="grid">
+      <article class="card wide">
+        <div class="bar blue"></div>
+        <div class="body">
+          <div class="title">联盟对决 VS 全面备战网页</div>
+          <div class="desc">按周一到周日整理车辆、建筑、科技、英雄、训练、PVP、存资源，重点是同一动作吃多份积分。</div>
+          <div class="meta"><span class="pill">网页</span><span class="pill">轻氪执行版</span></div>
+        </div>
+        <div class="actions"><a class="open" href="lastz_alliance_duel_vs.html">打开</a><span class="file">lastz_alliance_duel_vs.html</span></div>
+      </article>
+      <article class="card">
+        <div class="bar blue"></div>
+        <div class="body">
+          <div class="title">联盟对决 VS 全面备战图片</div>
+          <div class="desc">图片版，适合直接发给盟友或保存到手机。</div>
+          <div class="meta"><span class="pill">PNG</span><span class="pill">图片</span></div>
+        </div>
+        <div class="actions"><a class="open" href="联盟对决vs全面备战.png">打开</a><span class="file">联盟对决vs全面备战.png</span></div>
+      </article>
+    </div>
+
+    <div class="note">公开发布版本只链接网页和图片，不包含本地监控日志、兑换明细、抓取原文或个人账号数据。</div>
+    <footer>Last Z 轻氪攻略资料库</footer>
+  </div>
+</body>
+</html>

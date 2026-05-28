@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>联盟对决 VS 全面备战</title>
+  <style>
+    :root { --bg:#f5f7fb; --ink:#162033; --muted:#667085; --line:#d8dee9; --panel:#fff; --blue:#2166e8; --green:#138044; --red:#bd261d; --amber:#b86b00; --purple:#6941c6; }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","Segoe UI",Arial,sans-serif}
+    .page{max-width:980px;margin:0 auto;padding:16px 12px 34px}
+    header{background:#111827;color:#fff;border-radius:8px;padding:18px 16px;margin-bottom:12px}
+    h1{margin:0;font-size:30px}
+    .sub{color:#cbd5e1;margin-top:6px}
+    .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:12px}
+    section{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+    h2{margin:0;padding:12px 14px;color:#fff;font-size:20px}
+    .duel h2{background:var(--blue)} .prep h2{background:var(--green)} .tips h2{background:#111827}
+    .body{padding:12px}
+    .day{display:grid;grid-template-columns:64px 1fr;gap:10px;border-bottom:1px solid var(--line);padding:10px 0}
+    .day:last-child{border-bottom:0}
+    .dow{font-weight:900;color:#111827}
+    .task{font-size:18px;font-weight:900}
+    .note{font-size:14px;color:var(--muted);margin-top:3px}
+    .match{color:var(--blue)}
+    .save{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px;margin:8px 0}
+    .save b{display:block;font-size:17px;margin-bottom:3px}
+    ul{margin:0;padding-left:18px;color:#344054;line-height:1.65}
+    .full{grid-column:1/-1}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .mini{border:1px solid var(--line);border-radius:8px;padding:10px;background:#fff}
+    .mini b{font-size:17px}
+    .mini p{margin:5px 0 0;color:#475467;font-size:14px;line-height:1.45}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}h1{font-size:25px}.task{font-size:17px}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>联盟对决 VS 全面备战</h1>
+      <div class="sub">中高活跃轻氪版：把联盟对决项目和每日备战任务对齐，尽量用“同一件事拿两边积分”。</div>
+    </header>
+    <div class="grid">
+      <section class="duel">
+        <h2>联盟对决每日重点</h2>
+        <div class="body">
+          <div class="day"><div class="dow">周一</div><div><div class="task match">改装车强化</div><div class="note">尽量留改装材料，配合备战日一起做。</div></div></div>
+          <div class="day"><div class="dow">周二</div><div><div class="task match">建设避难所</div><div class="note">建筑加速、橙色悬赏、建筑任务一起交。</div></div></div>
+          <div class="day"><div class="dow">周三</div><div><div class="task match">研究科技</div><div class="note">研究加速、科技任务、卡车派遣一起安排。</div></div></div>
+          <div class="day"><div class="dow">周四</div><div><div class="task match">培养英雄</div><div class="note">招募、经验、武器、装备、技能提升。</div></div></div>
+          <div class="day"><div class="dow">周五</div><div><div class="task match">训练士兵</div><div class="note">制造士兵、训练加速集中使用。</div></div></div>
+          <div class="day"><div class="dow">周六</div><div><div class="task">PVP / 击杀</div><div class="note">开盾、听指挥、别单独送兵。</div></div></div>
+          <div class="day"><div class="dow">周日</div><div><div class="task">存资源 / 存加速</div><div class="note">为下周准备，不乱消耗。</div></div></div>
+        </div>
+      </section>
+      <section class="prep">
+        <h2>全面备战怎么配合</h2>
+        <div class="body">
+          <div class="save"><b>核心原则</b><span>哪个日子的“联盟对决任务”和“全面备战任务”相同，就优先做那个。</span></div>
+          <ul>
+            <li>周一留给改装车，别提前乱点车辆材料。</li>
+            <li>周二建筑日再交建筑、加速和建筑类悬赏。</li>
+            <li>周三科研日再用研究加速，书店/研究所越高越舒服。</li>
+            <li>周四集中英雄培养，优先主队而不是雨露均沾。</li>
+            <li>周五训练士兵，提前排长队，活动日用加速收尾。</li>
+            <li>周六如果睡觉，提前开足够时长护盾，不要卡 8 小时到期。</li>
+          </ul>
+        </div>
+      </section>
+      <section class="tips full">
+        <h2>中高活跃轻氪执行清单</h2>
+        <div class="body cards">
+          <div class="mini"><b>存</b><p>存加速、英雄经验、招募券、车辆材料，等对应日再用。</p></div>
+          <div class="mini"><b>对齐</b><p>同一动作尽量同时吃联盟对决、全面备战、日常任务三份收益。</p></div>
+          <div class="mini"><b>保命</b><p>击杀日前检查护盾时间，睡觉前宁可开长盾，不要省小亏大。</p></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Last Z 科技总览 手机版</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --ink: #17202e;
+      --muted: #667085;
+      --line: #d7dee8;
+      --panel: #fff;
+      --blue: #2166e8;
+      --green: #16803c;
+      --orange: #c35a00;
+      --red: #b42318;
+      --purple: #6941c6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+    }
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 18px 12px 26px;
+    }
+    header {
+      background: #111827;
+      color: #fff;
+      border-radius: 8px;
+      padding: 18px 16px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+    .sub {
+      margin-top: 6px;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .stat {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .stat b {
+      display: block;
+      font-size: 22px;
+    }
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 12px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 18px;
+    }
+    .section-title small {
+      font-size: 12px;
+      opacity: .9;
+      font-weight: 600;
+    }
+    .dev { background: var(--green); }
+    .war { background: var(--red); }
+    .ally { background: var(--blue); }
+    .special { background: var(--purple); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+    .card {
+      background: #fff;
+      padding: 12px;
+      min-height: 122px;
+    }
+    .name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .badge {
+      flex: 0 0 auto;
+      border-radius: 7px;
+      padding: 3px 7px;
+      background: #eef2ff;
+      color: #344054;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 5px;
+      color: #344054;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+    li::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 6px;
+      border-radius: 50%;
+      background: #98a2b3;
+      vertical-align: middle;
+    }
+    .path {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 12px;
+    }
+    .path h2 {
+      margin: 0 0 10px;
+      font-size: 19px;
+    }
+    .steps {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .step {
+      flex: 0 0 auto;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    footer {
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      padding: 10px 0 0;
+    }
+    @media (max-width: 520px) {
+      .page { padding: 10px 8px 18px; }
+      header { padding: 15px 13px; }
+      h1 { font-size: 24px; }
+      .grid { grid-template-columns: 1fr; }
+      .summary { grid-template-columns: repeat(3, 1fr); }
+      .card { min-height: auto; }
+      .name { font-size: 19px; }
+      ul { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>科技总览</h1>
+      <div class="sub">Last Z 官网资料重新排版，适合手机截图/保存查看</div>
+    </header>
+
+    <div class="summary">
+      <div class="stat"><b>18</b><span>科技入口</span></div>
+      <div class="stat"><b>4</b><span>分组</span></div>
+      <div class="stat"><b>31</b><span>最高研究所</span></div>
+    </div>
+
+    <section>
+      <div class="section-title dev">发展主线 <small>建设、总部、联盟前置</small></div>
+      <div class="grid">
+        <article class="card"><div class="name">新的家园 <span class="badge">Lv.1</span></div><ul><li>研究所等级 1</li></ul></article>
+        <article class="card"><div class="name">避难所建设 <span class="badge">Lv.5</span></div><ul><li>研究所等级 5</li></ul></article>
+        <article class="card"><div class="name">总部管理 <span class="badge">Lv.14</span></div><ul><li>研究所等级 14</li><li>避难所建设 100%</li></ul></article>
+        <article class="card"><div class="name">飞速建设 <span class="badge">Lv.22</span></div><ul><li>研究所等级 22</li><li>总部管理 100%</li></ul></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title war">军事主线 <small>部队、战斗、攻防</small></div>
+      <div class="grid">
+        <article class="card"><div class="name">精英部队 <span class="badge">Lv.8</span></div><ul><li>研究所等级 8</li></ul></article>
+        <article class="card"><div class="name">英雄训练 <span class="badge">Lv.8</span></div><ul><li>研究所等级 8</li></ul></article>
+        <article class="card"><div class="name">军事理论 <span class="badge">Lv.16</span></div><ul><li>研究所等级 16</li><li>精英部队 100%</li></ul></article>
+        <article class="card"><div class="name">攻城拔寨 <span class="badge">Lv.18</span></div><ul><li>研究所等级 18</li><li>军事理论 15%</li></ul></article>
+        <article class="card"><div class="name">战争守护 <span class="badge">Lv.18</span></div><ul><li>研究所等级 18</li><li>军事理论 45%</li></ul></article>
+        <article class="card"><div class="name">野战 <span class="badge">Lv.22</span></div><ul><li>研究所等级 22</li><li>攻城拔寨 100%</li></ul></article>
+        <article class="card"><div class="name">军事发展 <span class="badge">Lv.25</span></div><ul><li>研究所等级 25</li><li>战争守护 100%</li></ul></article>
+        <article class="card"><div class="name">战术大师 <span class="badge">Lv.31</span></div><ul><li>研究所等级 31</li><li>军事发展 100%</li><li>总部等级 31</li></ul></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title ally">联盟分支 <small>需要加入联盟</small></div>
+      <div class="grid">
+        <article class="card"><div class="name">联盟表彰 <span class="badge">Lv.10</span></div><ul><li>研究所等级 10</li><li>新的家园 50%</li><li>需要加入联盟</li></ul></article>
+        <article class="card"><div class="name">联盟武装 <span class="badge">Lv.10</span></div><ul><li>研究所等级 10</li><li>新的家园 50%</li><li>需要加入联盟</li></ul></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title special">特训 / S2 <small>中后期解锁</small></div>
+      <div class="grid">
+        <article class="card"><div class="name">士兵特训 <span class="badge">Lv.30</span></div><ul><li>研究所等级 30</li><li>总部等级 24</li></ul></article>
+        <article class="card"><div class="name">摩托特训 <span class="badge">Lv.25</span></div><ul><li>研究所等级 25</li><li>野战 100%</li></ul></article>
+        <article class="card"><div class="name">突击特训 <span class="badge">Lv.25</span></div><ul><li>研究所等级 25</li><li>野战 100%</li></ul></article>
+        <article class="card"><div class="name">射手特训 <span class="badge">Lv.25</span></div><ul><li>研究所等级 25</li><li>野战 100%</li></ul></article>
+        <article class="card"><div class="name">钢铁时代 <span class="badge">Lv.30</span></div><ul><li>研究所等级 30</li><li>总部等级 27</li><li>S2 钢铁时代活动开启后</li></ul></article>
+      </div>
+    </section>
+
+    <div class="path">
+      <h2>主线理解</h2>
+      <div class="steps">
+        <div class="step">新的家园</div>
+        <div class="step">避难所建设</div>
+        <div class="step">总部管理</div>
+        <div class="step">飞速建设</div>
+      </div>
+      <div class="steps">
+        <div class="step">精英部队</div>
+        <div class="step">军事理论</div>
+        <div class="step">攻城拔寨 / 战争守护</div>
+        <div class="step">野战 / 军事发展</div>
+        <div class="step">战术大师</div>
+      </div>
+    </div>
+
+    <footer>资料来源：Last Z 官网 Resource / Technology 页面。重新排版仅为手机查看。</footer>
+  </div>
+</body>
+</html>
