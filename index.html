@@ -37,7 +37,44 @@
       margin-bottom: 14px;
     }
     h1 { margin: 0; font-size: 34px; letter-spacing: 0; }
+    .hero-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+    .hero-copy { min-width: 0; }
     .sub { margin-top: 8px; color: #cbd5e1; max-width: 820px; }
+    .author-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 8px;
+      padding: 8px 10px 8px 8px;
+    }
+    .author-avatar {
+      width: 62px;
+      height: 62px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,.75);
+      background: #fff;
+    }
+    .author-label {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.2;
+    }
+    .author-name {
+      margin-top: 3px;
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+      white-space: nowrap;
+    }
     .quick {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -180,6 +217,9 @@
     @media (max-width: 640px) {
       .page { padding: 10px 8px 24px; }
       h1 { font-size: 27px; }
+      .hero-head { align-items: flex-start; flex-direction: column; }
+      .author-card { width: 100%; }
+      .author-avatar { width: 54px; height: 54px; }
       .grid { grid-template-columns: 1fr; }
       .wide { grid-column: auto; }
       .quick { grid-template-columns: repeat(2, 1fr); }
@@ -191,8 +231,19 @@
 <body>
   <div class="page">
     <header>
-      <h1>Last Z 攻略导航站</h1>
-      <div class="sub">由 724 服务器 SSBH 六梵天 Jason9527 整理分享，适合活跃轻氪玩家。资料来自盟友分享、Facebook 群组、Discord 群组、官网等。</div>
+      <div class="hero-head">
+        <div class="hero-copy">
+          <h1>Last Z 攻略导航站</h1>
+          <div class="sub">由 724 服务器 SSBH 六梵天 阿超chao 整理分享，适合活跃轻氪玩家。资料来自盟友分享、Facebook 群组、Discord 群组、官网等。</div>
+        </div>
+        <div class="author-card" aria-label="整理者 阿超chao">
+          <img class="author-avatar" src="achao-avatar.png" alt="阿超chao 头像">
+          <div>
+            <div class="author-label">整理分享</div>
+            <div class="author-name">阿超chao</div>
+          </div>
+        </div>
+      </div>
     </header>
 
     <nav class="quick">
