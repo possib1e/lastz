@@ -64,8 +64,10 @@ header:not(.topbar) {
   position: sticky !important;
   top: 0 !important;
   z-index: 50 !important;
+  padding: 0 !important;
   border-bottom: 1px solid rgba(160, 134, 92, .28) !important;
   backdrop-filter: blur(12px);
+  color: var(--lz-ink) !important;
 }
 
 h1,
