@@ -136,6 +136,58 @@ nav a {
   text-decoration: none !important;
 }
 
+.topbar .wrap.nav {
+  min-height: 68px !important;
+  height: auto !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+.topbar .brand {
+  gap: 12px !important;
+  font-size: 18px !important;
+  line-height: 1.15 !important;
+}
+
+.topbar .brand img {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.topbar .links {
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.topbar .links a {
+  min-height: 38px !important;
+  padding: 9px 14px !important;
+  border-radius: 999px !important;
+  font-size: 15px !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0 !important;
+  box-shadow: 0 6px 16px rgba(75, 55, 24, .08) !important;
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease !important;
+}
+
+.topbar .links a:hover {
+  border-color: rgba(181, 50, 32, .34) !important;
+  box-shadow: 0 10px 22px rgba(75, 55, 24, .13) !important;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1060px) {
+  .topbar .links {
+    gap: 7px !important;
+  }
+
+  .topbar .links a {
+    min-height: 36px !important;
+    padding: 8px 10px !important;
+    font-size: 14px !important;
+  }
+}
+
 .btn.primary,
 .button.primary,
 .primary {
