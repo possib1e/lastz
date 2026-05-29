@@ -61,6 +61,9 @@ header:not(.topbar) {
 }
 
 .topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
   border-bottom: 1px solid rgba(160, 134, 92, .28) !important;
   backdrop-filter: blur(12px);
 }
@@ -174,6 +177,16 @@ nav a {
   border-color: rgba(181, 50, 32, .34) !important;
   box-shadow: 0 10px 22px rgba(75, 55, 24, .13) !important;
   transform: translateY(-1px);
+}
+
+.topbar .links a.current {
+  background: #232932 !important;
+  border-color: #232932 !important;
+  color: #fffdf7 !important;
+}
+
+html {
+  scroll-padding-top: 86px;
 }
 
 @media (max-width: 1060px) {

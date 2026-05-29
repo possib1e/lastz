@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="assets/site-theme.css">
 </head>
 <body>
-  <header class="topbar"><div class="wrap nav"><a class="brand" href="index.html"><img src="assets/achao-avatar.png" alt="阿超chao头像"><span>Last Z 图片资料库</span></a><nav class="links"><a href="index.html">首页</a><a href="technology.html">科技总览</a><a href="duel-vs-prep.html">对决对比</a></nav></div></header>
-  <main>
+  <header data-site-nav></header>
+<main>
     <section class="hero"><div class="wrap"><div class="eyebrow">Charts</div><h1>核心资料图集中查看</h1><p class="lead">点击图片后可多次放大、滚轮缩放、拖动查看细字。手机上建议横屏查看。</p></div></section>
     <section class="section"><div class="wrap">
       <article class="card" id="tech"><h2>科技解锁条件</h2><p>科研分支很长，适合先用手机版总览理解路线，再回到这张图查前置。</p><img class="zoomable" data-src="assets/technology-unlock.png" src="assets/technology-unlock.png" alt="科技解锁条件"></article>
@@ -29,5 +29,6 @@
     function apply(){img.style.transform='translate('+x+'px,'+y+'px) scale('+scale+')'}function openImg(src){img.src=src;scale=1;x=0;y=0;modal.classList.add('open');apply()}function closeModal(){modal.classList.remove('open')}
     document.querySelectorAll('.zoomable').forEach(b=>b.addEventListener('click',()=>openImg(b.dataset.src)));document.getElementById('close').onclick=closeModal;document.getElementById('zoomIn').onclick=()=>{scale=Math.min(scale*1.35,16);apply()};document.getElementById('zoomOut').onclick=()=>{scale=Math.max(scale/1.35,.2);apply()};document.getElementById('zoomReset').onclick=()=>{scale=1;x=0;y=0;apply()};document.getElementById('fit').onclick=()=>{scale=.75;x=0;y=0;apply()};stage.addEventListener('wheel',e=>{e.preventDefault();scale=e.deltaY<0?Math.min(scale*1.2,16):Math.max(scale/1.2,.2);apply()},{passive:false});stage.addEventListener('mousedown',e=>{drag=true;sx=e.clientX-x;sy=e.clientY-y;stage.classList.add('dragging')});window.addEventListener('mousemove',e=>{if(!drag)return;x=e.clientX-sx;y=e.clientY-sy;apply()});window.addEventListener('mouseup',()=>{drag=false;stage.classList.remove('dragging')});window.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(e.key==='+'){scale=Math.min(scale*1.25,16);apply()}if(e.key==='-'){scale=Math.max(scale/1.25,.2);apply()}if(e.key==='0'){scale=1;x=0;y=0;apply()}});
   </script>
+  <script src="assets/site-nav.js"></script>
 </body>
 </html>

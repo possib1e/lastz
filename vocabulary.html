@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="assets/site-theme.css">
 </head>
 <body>
+  <header data-site-nav></header>
+
   <header><div class="wrap"><h1>Last Z 游戏英语词库</h1><div class="sub">合并官网资源词库、扩展游戏词库、SSBH 联盟邮件术语和官网英雄/科技补充术语，按英文词条去重。包含中文、音标、使用说明和发音按钮，适合边玩边学。</div><a class="back" href="index.html">返回攻略总站</a></div></header>
   <div class="tools"><div class="toolgrid"><input id="q" placeholder="搜索英文、中文、音标、说明"><select id="cat"><option value="all">全部分类</option></select><button id="randomBtn">随机 10 个</button><div class="stats" id="stats"></div></div></div>
   <main><div class="chips" id="chips"></div><div id="content"></div></main>
@@ -58,5 +60,6 @@
     randomBtn.addEventListener('click',()=>{state.random=true;render();});
     render();
   </script>
+  <script src="assets/site-nav.js"></script>
 </body>
 </html>

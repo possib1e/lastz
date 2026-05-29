@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="assets/site-theme.css">
 </head>
 <body>
-  <header class="topbar"><div class="wrap nav"><a class="brand" href="index.html"><img src="assets/achao-avatar.png" alt="阿超chao头像"><span>Last Z 礼品码</span></a><nav class="links"><a href="index.html">首页</a><a href="vocabulary.html">英语词库</a><a href="charts.html">图片资料</a></nav></div></header>
-  <main>
+  <header data-site-nav></header>
+<main>
     <section class="hero"><div class="wrap"><div class="eyebrow">Redeem Code</div><h1>礼品码状态表</h1><p class="lead">按“可领取、已领取、领取次数超过、时间失效”排序。可领取和已领取排在前面，因为换新游戏 ID 时仍可能继续兑换；次数超过和时间失效通常不能再领。</p></div></section>
     <section class="section"><div class="wrap">
       <div class="table-wrap"><table><thead><tr><th>优先级</th><th>礼品码</th><th>状态</th><th>来源</th><th>备注</th></tr></thead><tbody>
@@ -41,5 +41,6 @@
   </main>
   <footer class="footer"><div class="wrap">Last Z 综合攻略站 · 礼品码整理</div></footer>
   <script>document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{navigator.clipboard&&navigator.clipboard.writeText(b.dataset.code);b.style.outline='3px solid #c99422';setTimeout(()=>b.style.outline='',700)}));</script>
+  <script src="assets/site-nav.js"></script>
 </body>
 </html>

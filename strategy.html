@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -520,6 +520,8 @@
   <link rel="stylesheet" href="assets/site-theme.css">
 </head>
 <body>
+  <header data-site-nav></header>
+
   <a href="index.html" style="position:fixed;right:14px;bottom:14px;z-index:99;background:#111827;color:#fff;text-decoration:none;border-radius:8px;padding:10px 12px;font-weight:900;box-shadow:0 8px 24px rgba(0,0,0,.18)">返回攻略总站</a>
   <div class="layout">
     <aside>
@@ -1002,5 +1004,6 @@
       box.addEventListener('change', () => localStorage.setItem(key, box.checked ? '1' : '0'));
     });
   </script>
+  <script src="assets/site-nav.js"></script>
 </body>
 </html>
