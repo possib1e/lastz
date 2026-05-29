@@ -142,6 +142,10 @@ nav a {
 }
 
 .topbar .wrap.nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
   min-height: 68px !important;
   height: auto !important;
   padding-top: 8px !important;
@@ -149,9 +153,13 @@ nav a {
 }
 
 .topbar .brand {
+  display: flex !important;
+  align-items: center !important;
   gap: 12px !important;
   font-size: 18px !important;
   line-height: 1.15 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
 }
 
 .topbar .brand img {
@@ -160,6 +168,9 @@ nav a {
 }
 
 .topbar .links {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-end !important;
   gap: 10px !important;
   align-items: center !important;
 }
