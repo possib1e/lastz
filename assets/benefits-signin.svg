@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">七日签到奖励示意图</title>
+  <desc id="desc">七日签到页面，展示每天奖励和领取对勾。</desc>
+  <defs><linearGradient id="bg" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#fff4dc"/><stop offset="1" stop-color="#f6f2e8"/></linearGradient><linearGradient id="row" x1="0" x2="1"><stop stop-color="#59261d"/><stop offset="1" stop-color="#7b352b"/></linearGradient></defs>
+  <rect width="900" height="620" fill="url(#bg)"/>
+  <text x="450" y="70" text-anchor="middle" font-size="48" font-weight="900" font-family="Arial,'Microsoft YaHei'">七日签到</text>
+  <text x="235" y="120" text-anchor="end" font-size="22" font-weight="900" font-family="Arial,'Microsoft YaHei'">倒计时：</text>
+  <rect x="250" y="96" width="180" height="36" rx="5" fill="#8d8b90"/><text x="340" y="122" text-anchor="middle" fill="#fff" font-size="24" font-weight="900" font-family="Arial">02d 22:19:02</text>
+  <g font-family="Arial,'Microsoft YaHei'" font-weight="900">
+    <g transform="translate(120 155)">
+      <rect width="660" height="90" rx="6" fill="url(#row)" stroke="#4b211a" stroke-width="3"/>
+      <rect width="92" height="90" fill="#743024"/><text x="46" y="60" text-anchor="middle" fill="#d8b5a8" font-size="54">1</text>
+      <rect x="112" y="14" width="82" height="62" fill="#637339"/><text x="153" y="54" text-anchor="middle" fill="#f3d973" font-size="32">300</text>
+      <rect x="204" y="14" width="82" height="62" fill="#243a4e"/><text x="245" y="54" text-anchor="middle" fill="#eee" font-size="26">3</text>
+      <rect x="296" y="14" width="82" height="62" fill="#243a4e"/><text x="337" y="54" text-anchor="middle" fill="#eee" font-size="26">3</text>
+      <circle cx="430" cy="45" r="24" fill="#c99422"/><text x="430" y="54" text-anchor="middle" fill="#214a7b" font-size="25">Z</text><text x="470" y="55" fill="#d7b08a" font-size="26">x10</text>
+      <text x="590" y="64" text-anchor="middle" fill="#70d957" font-size="58">✓</text>
+    </g>
+    <g transform="translate(120 270)">
+      <rect width="660" height="90" rx="6" fill="url(#row)" stroke="#4b211a" stroke-width="3"/>
+      <rect width="92" height="90" fill="#743024"/><text x="46" y="60" text-anchor="middle" fill="#d8b5a8" font-size="54">2</text>
+      <rect x="112" y="14" width="82" height="62" fill="#2b6b45"/><text x="153" y="54" text-anchor="middle" fill="#fff" font-size="28">10</text>
+      <rect x="204" y="14" width="82" height="62" fill="#243a4e"/><text x="245" y="54" text-anchor="middle" fill="#eee" font-size="26">2</text>
+      <rect x="296" y="14" width="82" height="62" fill="#243a4e"/><text x="337" y="54" text-anchor="middle" fill="#eee" font-size="26">2</text>
+      <circle cx="430" cy="45" r="24" fill="#c99422"/><text x="430" y="54" text-anchor="middle" fill="#214a7b" font-size="25">Z</text><text x="470" y="55" fill="#d7b08a" font-size="26">x15</text>
+      <text x="590" y="64" text-anchor="middle" fill="#70d957" font-size="58">✓</text>
+    </g>
+    <g transform="translate(120 385)">
+      <rect width="660" height="90" rx="6" fill="url(#row)" stroke="#4b211a" stroke-width="3"/>
+      <rect width="92" height="90" fill="#743024"/><text x="46" y="60" text-anchor="middle" fill="#d8b5a8" font-size="54">3</text>
+      <rect x="112" y="14" width="82" height="62" fill="#3e2d62"/><text x="153" y="54" text-anchor="middle" fill="#fff" font-size="28">4</text>
+      <rect x="204" y="14" width="82" height="62" fill="#243a4e"/><text x="245" y="54" text-anchor="middle" fill="#eee" font-size="26">3</text>
+      <rect x="296" y="14" width="82" height="62" fill="#243a4e"/><text x="337" y="54" text-anchor="middle" fill="#eee" font-size="26">2</text>
+      <circle cx="430" cy="45" r="24" fill="#c99422"/><text x="430" y="54" text-anchor="middle" fill="#214a7b" font-size="25">Z</text><text x="470" y="55" fill="#d7b08a" font-size="26">x20</text>
+      <text x="590" y="64" text-anchor="middle" fill="#70d957" font-size="58">✓</text>
+    </g>
+  </g>
+  <rect x="170" y="510" width="560" height="58" rx="8" fill="#fffdf7" stroke="#e4d8c7"/>
+  <text x="450" y="546" text-anchor="middle" fill="#b4312d" font-size="22" font-weight="900" font-family="Arial,'Microsoft YaHei'">每天进来点一次，7天后继续循环</text>
+</svg>

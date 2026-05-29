@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">积分商城获取积分示意图</title>
+  <desc id="desc">积分商城页面，标出获取积分按钮和4000积分橙装目标。</desc>
+  <defs><linearGradient id="blue" x1="0" x2="1"><stop stop-color="#0c5590"/><stop offset="1" stop-color="#06182e"/></linearGradient><linearGradient id="card" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#54d1ff"/><stop offset="1" stop-color="#f6c14a"/></linearGradient></defs>
+  <rect width="900" height="620" fill="#f6f2e8"/>
+  <rect width="900" height="245" fill="url(#blue)"/>
+  <text x="455" y="105" text-anchor="middle" fill="#fff" font-size="56" font-weight="900" font-family="Arial,'Microsoft YaHei'">积分商城</text>
+  <text x="380" y="160" text-anchor="middle" fill="#fff" font-size="30" font-weight="900" font-family="Arial,'Microsoft YaHei'">积分：1830</text>
+  <rect x="525" y="128" width="150" height="56" rx="7" fill="#f8b326" stroke="#ffd46b" stroke-width="3"/>
+  <text x="600" y="164" text-anchor="middle" fill="#fff" font-size="27" font-weight="900" font-family="Arial,'Microsoft YaHei'">获取积分</text>
+  <ellipse cx="600" cy="156" rx="118" ry="62" fill="none" stroke="#ef4b4b" stroke-width="5"/>
+  <g font-family="Arial,'Microsoft YaHei'" font-weight="900">
+    <g transform="translate(135 285)"><rect width="120" height="100" fill="url(#card)" stroke="#c99422"/><path d="M0 0 L55 0 L0 55z" fill="#ef4b4b"/><text x="27" y="34" text-anchor="middle" fill="#fff" font-size="22" transform="rotate(-45 27 34)">70%</text><text x="60" y="78" text-anchor="middle" fill="#fff" font-size="24">240</text></g>
+    <g transform="translate(330 285)"><rect width="120" height="100" fill="url(#card)" stroke="#c99422"/><path d="M0 0 L55 0 L0 55z" fill="#ef4b4b"/><text x="27" y="34" text-anchor="middle" fill="#fff" font-size="22" transform="rotate(-45 27 34)">30%</text><text x="60" y="78" text-anchor="middle" fill="#fff" font-size="24">700</text></g>
+    <g transform="translate(525 285)"><rect width="120" height="100" fill="url(#card)" stroke="#c99422"/><path d="M0 0 L55 0 L0 55z" fill="#ef4b4b"/><text x="27" y="34" text-anchor="middle" fill="#fff" font-size="22" transform="rotate(-45 27 34)">20%</text><text x="60" y="78" text-anchor="middle" fill="#fff" font-size="24">4000</text></g>
+    <g transform="translate(675 285)"><rect width="120" height="100" fill="url(#card)" stroke="#c99422"/><path d="M0 0 L55 0 L0 55z" fill="#ef4b4b"/><text x="27" y="34" text-anchor="middle" fill="#fff" font-size="22" transform="rotate(-45 27 34)">10%</text><text x="60" y="78" text-anchor="middle" fill="#fff" font-size="24">2000</text></g>
+  </g>
+  <rect x="150" y="455" width="600" height="76" rx="8" fill="#fffdf7" stroke="#e4d8c7"/>
+  <text x="450" y="488" text-anchor="middle" fill="#20242a" font-size="22" font-weight="900" font-family="Arial,'Microsoft YaHei'">操作顺序：先点“获取积分”，再看能领哪些任务</text>
+  <text x="450" y="518" text-anchor="middle" fill="#b4312d" font-size="22" font-weight="900" font-family="Arial,'Microsoft YaHei'">长期目标：攒 4000 积分换一件橙装</text>
+</svg>

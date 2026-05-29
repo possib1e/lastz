@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">会员中心每周礼包示意图</title>
+  <desc id="desc">会员中心页面，展示等级和每周特权礼包领取位置。</desc>
+  <defs><linearGradient id="hero" x1="0" x2="1"><stop stop-color="#873f27"/><stop offset=".55" stop-color="#f8d27a"/><stop offset="1" stop-color="#8a3b25"/></linearGradient><linearGradient id="pack" x1="0" x2="1"><stop stop-color="#f8c13f"/><stop offset="1" stop-color="#e7a92f"/></linearGradient></defs>
+  <rect width="900" height="620" fill="#f6f2e8"/>
+  <rect width="900" height="190" fill="url(#hero)"/>
+  <polygon points="450,10 510,70 450,130 390,70" fill="#e7432e" stroke="#ffd27a" stroke-width="8"/>
+  <text x="450" y="85" text-anchor="middle" fill="#fff" font-size="52" font-weight="900" font-family="Arial">3</text>
+  <text x="450" y="180" text-anchor="middle" font-size="26" font-weight="900" font-family="Arial,'Microsoft YaHei'">当前等级</text>
+  <text x="450" y="236" text-anchor="middle" font-size="19" font-weight="900" font-family="Arial,'Microsoft YaHei'">距离下一个等级还需要 25900 金砖碎片</text>
+  <rect x="155" y="260" width="590" height="24" fill="#5f5a50"/><rect x="155" y="260" width="250" height="24" fill="#ffc400"/><text x="450" y="279" text-anchor="middle" fill="#fff" font-size="19" font-weight="900" font-family="Arial">19100/45000</text>
+  <g font-family="Arial,'Microsoft YaHei'" font-weight="900">
+    <path d="M170 330 h95 l28 38 h-123z" fill="#e53b17" stroke="#c99422"/><text x="220" y="358" text-anchor="middle" fill="#fff" font-size="22">特权权益</text>
+    <rect x="170" y="368" width="560" height="70" fill="#eee7d8"/><circle cx="225" cy="402" r="18" fill="#c99422"/><text x="225" y="410" text-anchor="middle" fill="#fff" font-size="20">礼</text><text x="225" y="432" text-anchor="middle" font-size="19">福利礼包</text>
+    <path d="M170 470 h120 l28 38 h-148z" fill="#e53b17" stroke="#c99422"/><text x="236" y="498" text-anchor="middle" fill="#fff" font-size="22">每周特权礼包</text>
+    <rect x="175" y="508" width="550" height="86" fill="url(#pack)" stroke="#b87320"/>
+    <text x="260" y="560" text-anchor="middle" fill="#fff" font-size="26">400</text>
+    <text x="410" y="560" text-anchor="middle" fill="#fff" font-size="26">5</text>
+    <text x="560" y="560" text-anchor="middle" fill="#fff" font-size="26">2</text>
+    <rect x="365" y="555" width="170" height="38" rx="4" fill="#999"/><text x="450" y="580" text-anchor="middle" fill="#fff" font-size="22">已领取</text>
+  </g>
+  <text x="450" y="312" text-anchor="middle" fill="#b4312d" font-size="20" font-weight="900" font-family="Arial,'Microsoft YaHei'">重点：每周检查“每周特权礼包”是否可领取</text>
+</svg>
