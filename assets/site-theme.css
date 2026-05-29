@@ -65,6 +65,7 @@ header:not(.topbar) {
   top: 0 !important;
   z-index: 50 !important;
   padding: 0 !important;
+  background: rgba(255, 253, 247, .92) !important;
   border-bottom: 1px solid rgba(160, 134, 92, .28) !important;
   backdrop-filter: blur(12px);
   color: var(--lz-ink) !important;
@@ -148,8 +149,14 @@ nav a {
   gap: 16px !important;
   min-height: 68px !important;
   height: auto !important;
+  max-width: 1180px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
   padding-top: 8px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
   padding-bottom: 8px !important;
+  box-sizing: border-box !important;
 }
 
 .topbar .brand {
@@ -157,6 +164,7 @@ nav a {
   align-items: center !important;
   gap: 12px !important;
   font-size: 18px !important;
+  font-weight: 900 !important;
   line-height: 1.15 !important;
   text-decoration: none !important;
   white-space: nowrap !important;
@@ -165,6 +173,9 @@ nav a {
 .topbar .brand img {
   width: 42px !important;
   height: 42px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 2px solid #111 !important;
 }
 
 .topbar .links {
@@ -176,6 +187,9 @@ nav a {
 }
 
 .topbar .links a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   min-height: 38px !important;
   padding: 9px 14px !important;
   border-radius: 999px !important;
