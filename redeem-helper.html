@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Last Z Gift Code Redeem Helper</title>
+  <link rel="stylesheet" href="assets/site-theme.css">
+  <style>
+    :root {
+      --paper: #fffdf7;
+      --ink: #20242a;
+      --muted: #6b6257;
+      --line: #e4d8c7;
+      --red: #b4312d;
+      --gold: #c99422;
+      --green: #26724d;
+      --blue: #235a8f;
+      --dark: #1e242b;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    .hero {
+      padding: 34px 0 28px;
+      background: linear-gradient(135deg, #fff9ec, #f5e5c8);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-panel {
+      background: rgba(255, 253, 247, .82);
+      border: 1px solid rgba(228, 216, 199, .9);
+      border-radius: 8px;
+      box-shadow: 0 14px 38px rgba(75, 55, 24, .09);
+      padding: 26px 28px;
+    }
+    .hero-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--red);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 38px;
+      margin: 10px 0 8px;
+      letter-spacing: 0;
+    }
+    .lead {
+      font-size: 18px;
+      color: #4d453b;
+      max-width: 900px;
+      margin: 0;
+    }
+    .lang-switch {
+      display: inline-flex;
+      gap: 8px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 247, .78);
+      white-space: nowrap;
+    }
+    .lang-switch button {
+      min-height: 34px;
+      padding: 6px 12px;
+      border-radius: 999px !important;
+      border: 0 !important;
+      background: transparent !important;
+      cursor: pointer;
+      font-weight: 900;
+    }
+    .lang-switch button.active {
+      background: var(--dark) !important;
+      color: #fffdf7 !important;
+    }
+    .section { padding: 30px 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .card {
+      padding: 18px;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+    .hint {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 12px;
+    }
+    label {
+      display: block;
+      font-weight: 900;
+      margin: 12px 0 8px;
+    }
+    textarea,
+    input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffaf0;
+      color: var(--ink);
+      font: 16px/1.55 Consolas, "Microsoft YaHei", monospace;
+      padding: 12px;
+      outline: none;
+    }
+    textarea {
+      min-height: 172px;
+      resize: vertical;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .options input {
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+    }
+    input:focus,
+    textarea:focus {
+      border-color: rgba(180, 49, 45, .45);
+      box-shadow: 0 0 0 3px rgba(180, 49, 45, .1);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 9px 14px;
+      cursor: pointer;
+    }
+    .btn.primary {
+      background: var(--dark) !important;
+      color: #fff !important;
+      border-color: var(--dark) !important;
+    }
+    .btn:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+      box-shadow: none !important;
+      border: 0 !important;
+      background: transparent !important;
+    }
+    .metric {
+      padding: 12px;
+      text-align: center;
+    }
+    .metric b {
+      display: block;
+      font-size: 24px;
+      color: var(--dark);
+    }
+    .notice {
+      border-left: 4px solid var(--gold);
+      background: #fff9e8;
+      padding: 14px 16px;
+      border-radius: 8px;
+      color: #5c4b32;
+    }
+    .table-wrap {
+      overflow: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 860px;
+    }
+    th,
+    td {
+      padding: 11px 12px;
+      border-bottom: 1px solid #eadfcd;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #efe2cd;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .code,
+    .uid {
+      font-family: Consolas, monospace;
+      font-weight: 900;
+    }
+    .status {
+      font-weight: 900;
+    }
+    .ok .status { color: var(--green); }
+    .claimed .status { color: var(--blue); }
+    .bad .status { color: var(--red); }
+    .waiting .status { color: #6a4a08; }
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer {
+      padding: 26px 0 42px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    body.auth-locked {
+      overflow: hidden;
+    }
+    body.auth-locked header,
+    body.auth-locked main,
+    body.auth-locked footer {
+      filter: blur(4px);
+      pointer-events: none;
+      user-select: none;
+    }
+    .auth-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 72% 22%, rgba(201, 148, 34, .22), transparent 28%),
+        rgba(30, 36, 43, .78);
+      backdrop-filter: blur(6px);
+    }
+    .auth-gate.hidden {
+      display: none;
+    }
+    .auth-box {
+      width: min(440px, 100%);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .28);
+      padding: 24px;
+    }
+    .auth-box h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+    .auth-box p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+    .auth-row {
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+    }
+    .auth-row input {
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+    }
+    .auth-row .btn {
+      min-width: 96px;
+    }
+    .auth-error {
+      min-height: 22px;
+      margin-top: 10px;
+      color: var(--red);
+      font-size: 14px;
+      font-weight: 900;
+    }
+    @media (max-width: 860px) {
+      .hero { padding: 22px 0; }
+      .hero-panel { padding: 22px 18px; }
+      .hero-head { flex-direction: column; }
+      .grid { grid-template-columns: 1fr; }
+      .summary { grid-template-columns: repeat(2, 1fr); }
+      h1 { font-size: 30px; }
+      .auth-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body class="auth-locked">
+  <div class="auth-gate" id="authGate" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="auth-box">
+      <div class="eyebrow">SSBH Access</div>
+      <h2 id="authTitle" data-i18n="authTitle">输入访问密码</h2>
+      <p data-i18n="authLead">这个领取助手暂时只给 SSBH 盟友和被邀请的玩家使用。</p>
+      <label for="authPassword" data-i18n="authLabel">访问密码</label>
+      <div class="auth-row">
+        <input id="authPassword" type="password" autocomplete="current-password" data-placeholder="authPlaceholder">
+        <button class="btn primary" id="authSubmit" type="button" data-i18n="authSubmit">确认</button>
+      </div>
+      <div class="auth-error" id="authError" aria-live="polite"></div>
+    </div>
+  </div>
+  <header data-site-nav></header>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-panel hero-head">
+          <div>
+            <div class="eyebrow">Gift Code Helper</div>
+            <h1 data-i18n="title">礼品码批量领取助手</h1>
+            <p class="lead" data-i18n="lead">输入一个或多个 UID、一个或多个礼品码，点击领取后逐条显示角色名、礼品码和领取结果。适合帮盟友快速验证和领取。</p>
+          </div>
+          <div class="lang-switch" aria-label="Language">
+            <button type="button" class="active" data-lang="zh">中文</button>
+            <button type="button" data-lang="en">English</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap grid">
+        <article class="card">
+          <h2 data-i18n="formTitle">填写信息</h2>
+          <p class="hint" data-i18n="formHint">单个或批量都可以。批量时一行一个，系统会自动去重。</p>
+
+          <label for="uids" data-i18n="uidLabel">UID / 游戏 ID</label>
+          <textarea id="uids" spellcheck="false" data-placeholder="uidPlaceholder"></textarea>
+
+          <label for="codes" data-i18n="codeLabel">Gift Code / 礼品码</label>
+          <textarea id="codes" spellcheck="false" data-placeholder="codePlaceholder"></textarea>
+
+          <div class="options">
+            <div>
+              <label for="delayMs" data-i18n="delayLabel">每次请求间隔（毫秒）</label>
+              <input id="delayMs" type="number" min="500" step="500" value="5000">
+            </div>
+            <div>
+              <label for="retryTimes" data-i18n="retryLabel">失败重试次数</label>
+              <input id="retryTimes" type="number" min="0" max="5" step="1" value="3">
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="redeemBtn" data-i18n="redeemBtn">开始领取</button>
+            <button class="btn" id="stopBtn" disabled data-i18n="stopBtn">停止</button>
+            <button class="btn" id="clearBtn" data-i18n="clearBtn">清空结果</button>
+            <button class="btn" id="exportBtn" data-i18n="exportBtn">导出结果</button>
+          </div>
+        </article>
+
+        <aside class="card">
+          <h2 data-i18n="resultTitle">结果说明</h2>
+          <div class="notice">
+            <strong data-i18n="noticeStrong">提示：</strong>
+            <span data-i18n="noticeText">领取结果以官方接口返回为准。常见状态：</span><br>
+            <span class="status" style="color:var(--green)">ok</span>
+            <span data-i18n="noticeOk">表示领取成功；</span>
+            <span class="status" style="color:var(--blue)">already exchanged</span>
+            <span data-i18n="noticeClaimed">表示这个 UID 已经领过；</span>
+            <span class="status" style="color:var(--red)">count limit / expired</span>
+            <span data-i18n="noticeBad">通常表示次数超过或已经失效；</span>
+            <span class="status" style="color:var(--red)">params error</span>
+            <span data-i18n="noticeParams">多半是 UID/礼品码格式不对，或浏览器没有把官方接口需要的请求头成功带过去。</span>
+          </div>
+          <div class="summary">
+            <div class="metric"><b id="totalCount">0</b><span data-i18n="metricTotal">总任务</span></div>
+            <div class="metric"><b id="doneCount">0</b><span data-i18n="metricDone">已完成</span></div>
+            <div class="metric"><b id="okCount">0</b><span data-i18n="metricOk">成功</span></div>
+            <div class="metric"><b id="failCount">0</b><span data-i18n="metricFail">失败/异常</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="thTime">时间</th>
+                <th>UID</th>
+                <th data-i18n="thName">角色名</th>
+                <th data-i18n="thCode">礼品码</th>
+                <th data-i18n="thStatus">领取情况</th>
+                <th data-i18n="thDetail">详细返回</th>
+              </tr>
+            </thead>
+            <tbody id="results"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap" data-i18n="footer">Last Z 综合攻略站 · 礼品码领取助手</div>
+  </footer>
+
+  <script src="assets/site-nav.js"></script>
+  <script>
+    const dict = {
+      zh: {
+        authTitle: "输入访问密码",
+        authLead: "这个领取助手暂时只给 SSBH 盟友和被邀请的玩家使用。",
+        authLabel: "访问密码",
+        authPlaceholder: "请输入密码",
+        authSubmit: "确认",
+        authWrong: "密码不正确，请重新输入。",
+        title: "礼品码批量领取助手",
+        lead: "输入一个或多个 UID、一个或多个礼品码，点击领取后逐条显示角色名、礼品码和领取结果。适合帮盟友快速验证和领取。",
+        formTitle: "填写信息",
+        formHint: "单个或批量都可以。批量时一行一个，系统会自动去重。",
+        uidLabel: "UID / 游戏 ID",
+        codeLabel: "Gift Code / 礼品码",
+        uidPlaceholder: "1257639560000724\n2287760229000724\n1204517864000724",
+        codePlaceholder: "LEVELUPHIGHER\nWELCOMETOJUNE",
+        delayLabel: "每次请求间隔（毫秒）",
+        retryLabel: "失败重试次数",
+        redeemBtn: "开始领取",
+        stopBtn: "停止",
+        clearBtn: "清空结果",
+        exportBtn: "导出结果",
+        resultTitle: "结果说明",
+        noticeStrong: "提示：",
+        noticeText: "领取结果以官方接口返回为准。常见状态：",
+        noticeOk: "表示领取成功；",
+        noticeClaimed: "表示这个 UID 已经领过；",
+        noticeBad: "通常表示次数超过或已经失效；",
+        noticeParams: "多半是 UID/礼品码格式不对，或浏览器没有把官方接口需要的请求头成功带过去。",
+        metricTotal: "总任务",
+        metricDone: "已完成",
+        metricOk: "成功",
+        metricFail: "失败/异常",
+        thTime: "时间",
+        thName: "角色名",
+        thCode: "礼品码",
+        thStatus: "领取情况",
+        thDetail: "详细返回",
+        empty: "还没有结果。填写 UID 和礼品码后点击“开始领取”。",
+        unknownName: "未获取",
+        waiting: "等待中",
+        success: "领取成功",
+        claimed: "已领取",
+        paramsError: "参数错误",
+        unavailable: "次数超过/已失效",
+        unknown: "未知返回",
+        requestFailed: "请求失败",
+        alertMissing: "请至少填写 1 个 UID 和 1 个 Gift Code。",
+        footer: "Last Z 综合攻略站 · 礼品码领取助手",
+        csvHeaders: ["时间", "UID", "角色名", "礼品码", "领取情况", "详细返回"]
+      },
+      en: {
+        authTitle: "Enter Access Password",
+        authLead: "This redeem helper is currently for SSBH allies and invited players.",
+        authLabel: "Access Password",
+        authPlaceholder: "Enter password",
+        authSubmit: "Confirm",
+        authWrong: "Wrong password. Please try again.",
+        title: "Gift Code Batch Redeem Helper",
+        lead: "Enter one or more UIDs and one or more gift codes. The page will redeem them one by one and show the player name, code, status, and raw response.",
+        formTitle: "Redeem Form",
+        formHint: "Single or batch mode are both supported. Put one item per line; duplicates are removed automatically.",
+        uidLabel: "UID / Game ID",
+        codeLabel: "Gift Code",
+        uidPlaceholder: "1257639560000724\n2287760229000724\n1204517864000724",
+        codePlaceholder: "LEVELUPHIGHER\nWELCOMETOJUNE",
+        delayLabel: "Delay Between Requests (ms)",
+        retryLabel: "Retry Attempts",
+        redeemBtn: "Start Redeem",
+        stopBtn: "Stop",
+        clearBtn: "Clear Results",
+        exportBtn: "Export Results",
+        resultTitle: "Result Notes",
+        noticeStrong: "Note: ",
+        noticeText: "Results come from the official API. Common statuses:",
+        noticeOk: "means redeemed successfully;",
+        noticeClaimed: "means this UID has already redeemed it;",
+        noticeBad: "usually means the code is expired or usage limit reached;",
+        noticeParams: "usually means the UID/code format is wrong, or the browser failed to send the required request header.",
+        metricTotal: "Total",
+        metricDone: "Done",
+        metricOk: "Success",
+        metricFail: "Failed/Error",
+        thTime: "Time",
+        thName: "Player Name",
+        thCode: "Gift Code",
+        thStatus: "Status",
+        thDetail: "Raw Response",
+        empty: "No results yet. Enter UID and gift code, then click “Start Redeem”.",
+        unknownName: "Not found",
+        waiting: "Waiting",
+        success: "Redeemed",
+        claimed: "Already redeemed",
+        paramsError: "Params error",
+        unavailable: "Limit reached/expired",
+        unknown: "Unknown response",
+        requestFailed: "Request failed",
+        alertMissing: "Please enter at least 1 UID and 1 gift code.",
+        footer: "Last Z Guide · Gift Code Redeem Helper",
+        csvHeaders: ["time", "uid", "player_name", "gift_code", "status", "raw_response"]
+      }
+    };
+
+    const els = {
+      uids: document.getElementById("uids"),
+      codes: document.getElementById("codes"),
+      redeem: document.getElementById("redeemBtn"),
+      stop: document.getElementById("stopBtn"),
+      clear: document.getElementById("clearBtn"),
+      export: document.getElementById("exportBtn"),
+      delay: document.getElementById("delayMs"),
+      retry: document.getElementById("retryTimes"),
+      results: document.getElementById("results"),
+      total: document.getElementById("totalCount"),
+      done: document.getElementById("doneCount"),
+      ok: document.getElementById("okCount"),
+      fail: document.getElementById("failCount"),
+      langButtons: document.querySelectorAll("[data-lang]"),
+      authGate: document.getElementById("authGate"),
+      authPassword: document.getElementById("authPassword"),
+      authSubmit: document.getElementById("authSubmit"),
+      authError: document.getElementById("authError")
+    };
+
+    const ACCESS_PASSWORD = "SSBH";
+    const AUTH_KEY = "lastzRedeemAuthOk";
+
+    const state = {
+      lang: localStorage.getItem("lastzRedeemLang") || "zh",
+      running: false,
+      stop: false,
+      rows: []
+    };
+
+    const api = {
+      user: uid => `https://giftcenter.last-z.com/getcodeuser.php?uid=${encodeURIComponent(uid)}`,
+      redeem: (uid, code) => `https://giftcenter.last-z.com/code.php?uid=${encodeURIComponent(uid)}&code=${encodeURIComponent(code)}`
+    };
+
+    function t(key) {
+      return dict[state.lang][key] || dict.zh[key] || key;
+    }
+
+    function applyLanguage(lang) {
+      state.lang = lang;
+      localStorage.setItem("lastzRedeemLang", lang);
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
+      document.querySelectorAll("[data-i18n]").forEach(node => {
+        node.textContent = t(node.dataset.i18n);
+      });
+      document.querySelectorAll("[data-placeholder]").forEach(node => {
+        node.placeholder = t(node.dataset.placeholder);
+      });
+      els.langButtons.forEach(btn => btn.classList.toggle("active", btn.dataset.lang === lang));
+      render();
+    }
+
+    function unlockPage() {
+      document.body.classList.remove("auth-locked");
+      els.authGate.classList.add("hidden");
+      sessionStorage.setItem(AUTH_KEY, "1");
+    }
+
+    function checkPassword() {
+      if (els.authPassword.value.trim() === ACCESS_PASSWORD) {
+        els.authError.textContent = "";
+        unlockPage();
+        return;
+      }
+      els.authError.textContent = t("authWrong");
+      els.authPassword.select();
+    }
+
+    function parseLines(text, pattern) {
+      return [...new Set(text.split(/\r?\n|,|，|\s+/).map(x => x.trim()).filter(Boolean))]
+        .filter(x => !pattern || pattern.test(x));
+    }
+
+    function setEmpty() {
+      els.results.innerHTML = `<tr><td colspan="6" class="small">${t("empty")}</td></tr>`;
+    }
+
+    function updateStats(total) {
+      const done = state.rows.filter(r => r.statusKey !== "waiting").length;
+      const ok = state.rows.filter(r => r.kind === "ok").length;
+      const fail = state.rows.filter(r => r.kind === "bad").length;
+      els.total.textContent = total ?? state.rows.length;
+      els.done.textContent = done;
+      els.ok.textContent = ok;
+      els.fail.textContent = fail;
+    }
+
+    function normalizeResult(text) {
+      let obj = null;
+      try { obj = JSON.parse(text); } catch (_) {}
+      const message = (obj && (obj.message || obj.errorCode || obj.error || obj.code)) ? JSON.stringify(obj) : text;
+      const lower = message.toLowerCase();
+
+      if (lower.includes('"ok"') || lower.includes('errorcode":"ok')) {
+        return { statusKey: "success", kind: "ok", detail: message };
+      }
+      if (lower.includes("already exchanged")) {
+        return { statusKey: "claimed", kind: "claimed", detail: message };
+      }
+      if (lower.includes("params error") || lower.includes('"code":10018')) {
+        return { statusKey: "paramsError", kind: "bad", detail: message };
+      }
+      if (lower.includes("count") || lower.includes("limit") || lower.includes("expired") || lower.includes("e007")) {
+        return { statusKey: "unavailable", kind: "bad", detail: message };
+      }
+      return { statusKey: "unknown", kind: "bad", detail: message || t("unknown") };
+    }
+
+    function decodeName(userText) {
+      try {
+        const user = JSON.parse(userText);
+        return user && user.result && user.result.name ? user.result.name : "";
+      } catch (_) {
+        return "";
+      }
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function requestText(url, options = {}) {
+      const res = await fetch(url, options);
+      return await res.text();
+    }
+
+    function render() {
+      if (!state.rows.length) {
+        setEmpty();
+        updateStats(0);
+        return;
+      }
+
+      els.results.innerHTML = state.rows.map(r => `
+        <tr class="${r.kind}">
+          <td class="small">${escapeHtml(r.time)}</td>
+          <td class="uid">${escapeHtml(r.uid)}</td>
+          <td>${r.name ? escapeHtml(r.name) : `<span class="small">${t("unknownName")}</span>`}</td>
+          <td class="code">${escapeHtml(r.code)}</td>
+          <td class="status">${escapeHtml(t(r.statusKey))}</td>
+          <td class="small">${escapeHtml(r.detail || "")}</td>
+        </tr>
+      `).join("");
+      updateStats();
+    }
+
+    function escapeHtml(text) {
+      return String(text).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+    }
+
+    async function requestTextWithRetry(url, options, retryTimes, delayMs) {
+      let lastError = null;
+      for (let attempt = 0; attempt <= retryTimes; attempt++) {
+        try {
+          return await requestText(url, options);
+        } catch (error) {
+          lastError = error;
+          if (attempt < retryTimes) await sleep(delayMs + attempt * 1500);
+        }
+      }
+      throw lastError;
+    }
+
+    async function redeemOne(uid, code, retryTimes, delayMs) {
+      const row = {
+        time: new Date().toLocaleString(state.lang === "zh" ? "zh-CN" : "en-US"),
+        uid,
+        name: "",
+        code,
+        statusKey: "waiting",
+        kind: "waiting",
+        detail: ""
+      };
+      state.rows.push(row);
+      render();
+
+      try {
+        const userText = await requestTextWithRetry(api.user(uid), {}, retryTimes, delayMs);
+        row.name = decodeName(userText);
+        await sleep(delayMs);
+
+        const redeemText = await requestTextWithRetry(
+          api.redeem(uid, code),
+          { headers: { Usertoken: uid } },
+          retryTimes,
+          delayMs
+        );
+        const result = normalizeResult(redeemText);
+        row.statusKey = result.statusKey;
+        row.kind = result.kind;
+        row.detail = result.detail;
+      } catch (error) {
+        row.statusKey = "requestFailed";
+        row.kind = "bad";
+        row.detail = String(error && error.message ? error.message : error);
+      }
+
+      render();
+      await sleep(delayMs);
+    }
+
+    els.redeem.addEventListener("click", async () => {
+      const uids = parseLines(els.uids.value, /^\d{8,}$/);
+      const codes = parseLines(els.codes.value, /^[A-Za-z0-9_-]{6,40}$/).map(x => x.toUpperCase());
+
+      if (!uids.length || !codes.length) {
+        alert(t("alertMissing"));
+        return;
+      }
+
+      const delayMs = Math.max(500, Number(els.delay.value) || 5000);
+      const retryTimes = Math.max(0, Math.min(5, Number(els.retry.value) || 0));
+      const total = uids.length * codes.length;
+
+      state.running = true;
+      state.stop = false;
+      els.redeem.disabled = true;
+      els.stop.disabled = false;
+      els.total.textContent = total;
+
+      for (const code of codes) {
+        for (const uid of uids) {
+          if (state.stop) break;
+          await redeemOne(uid, code, retryTimes, delayMs);
+        }
+        if (state.stop) break;
+      }
+
+      state.running = false;
+      els.redeem.disabled = false;
+      els.stop.disabled = true;
+      updateStats(total);
+    });
+
+    els.stop.addEventListener("click", () => {
+      state.stop = true;
+    });
+
+    els.clear.addEventListener("click", () => {
+      state.rows = [];
+      updateStats(0);
+      setEmpty();
+    });
+
+    els.export.addEventListener("click", () => {
+      const keys = ["time", "uid", "name", "code", "status", "detail"];
+      const headers = t("csvHeaders");
+      const lines = [headers.join(",")].concat(state.rows.map(r => {
+        const values = {
+          time: r.time,
+          uid: r.uid,
+          name: r.name,
+          code: r.code,
+          status: t(r.statusKey),
+          detail: r.detail
+        };
+        return keys.map(k => `"${String(values[k] || "").replace(/"/g, '""')}"`).join(",");
+      }));
+      const blob = new Blob(["\ufeff" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `lastz-gift-code-results-${Date.now()}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    els.authSubmit.addEventListener("click", checkPassword);
+    els.authPassword.addEventListener("keydown", event => {
+      if (event.key === "Enter") checkPassword();
+    });
+
+    els.langButtons.forEach(btn => {
+      btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+    });
+
+    applyLanguage(state.lang);
+    if (sessionStorage.getItem(AUTH_KEY) === "1") {
+      unlockPage();
+    } else {
+      els.authPassword.focus();
+    }
+  </script>
+</body>
+</html>

@@ -1,10 +1,11 @@
 (function () {
   const nav = [
-    { label: "\u8def\u7ebf", href: "index.html#start" },
-    { label: "\u653b\u7565\u6574\u5408", href: "guide.html" },
+    { label: "\u9996\u9875", href: "index.html#start" },
+    { label: "\u653b\u7565\u5927\u5168", href: "guide.html" },
     { label: "\u5b98\u7f51\u798f\u5229", href: "daily-benefits.html" },
-    { label: "\u793c\u54c1\u7801", href: "gift-codes.html" },
-    { label: "\u56fe\u7247\u8d44\u6599", href: "charts.html" },
+    { label: "\u793c\u54c1\u7801\u5e93", href: "gift-codes.html" },
+    { label: "Gift Code \u52a9\u624b", href: "redeem-helper.html" },
+    { label: "\u8d44\u6599\u56fe\u8868", href: "charts.html" },
     { label: "\u82f1\u8bed\u8bcd\u5e93", href: "vocabulary.html" }
   ];
 
