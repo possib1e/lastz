@@ -137,6 +137,23 @@
       gap: 10px;
       margin-top: 14px;
     }
+    .field-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin: 8px 0 4px;
+    }
+    .field-tools .btn {
+      min-height: 34px;
+      padding: 7px 11px;
+      font-size: 13px;
+    }
+    .field-note {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -331,6 +348,10 @@
 
           <label for="uids" data-i18n="uidLabel">UID / 游戏 ID</label>
           <textarea id="uids" spellcheck="false" data-placeholder="uidPlaceholder"></textarea>
+          <div class="field-tools">
+            <button class="btn" id="importAllianceUidsBtn" type="button" data-i18n="importAllianceUids">Import Alliance UIDs</button>
+            <span class="field-note" data-i18n="importAllianceUidsNote">Adds registered alliance UIDs and removes duplicates.</span>
+          </div>
 
           <label for="codes" data-i18n="codeLabel">Gift Code / 礼品码</label>
           <textarea id="codes" spellcheck="false" data-placeholder="codePlaceholder"></textarea>
@@ -427,6 +448,9 @@
         stopBtn: "停止",
         clearBtn: "清空结果",
         exportBtn: "导出结果",
+        importAllianceUids: "\u4e00\u952e\u5bfc\u5165\u8054\u76df UID",
+        importAllianceUidsNote: "\u5c06\u5df2\u767b\u8bb0\u7684\u8054\u76df\u6210\u5458 UID \u5408\u5e76\u5230\u8f93\u5165\u6846\uff0c\u5e76\u81ea\u52a8\u53bb\u91cd\u3002",
+        importAllianceDone: "\u5df2\u5bfc\u5165 {count} \u4e2a\u8054\u76df UID\uff0c\u5e76\u5b8c\u6210\u53bb\u91cd\u3002",
         resultTitle: "结果说明",
         noticeStrong: "提示：",
         noticeText: "领取结果以官方接口返回为准。常见状态：",
@@ -477,6 +501,9 @@
         stopBtn: "Stop",
         clearBtn: "Clear Results",
         exportBtn: "Export Results",
+        importAllianceUids: "Import Alliance UIDs",
+        importAllianceUidsNote: "Adds registered alliance UIDs to the input box and removes duplicates.",
+        importAllianceDone: "Imported {count} alliance UIDs and removed duplicates.",
         resultTitle: "Result Notes",
         noticeStrong: "Note: ",
         noticeText: "Results come from the official API. Common statuses:",
@@ -515,6 +542,7 @@
       stop: document.getElementById("stopBtn"),
       clear: document.getElementById("clearBtn"),
       export: document.getElementById("exportBtn"),
+      importAllianceUids: document.getElementById("importAllianceUidsBtn"),
       delay: document.getElementById("delayMs"),
       retry: document.getElementById("retryTimes"),
       results: document.getElementById("results"),
@@ -538,6 +566,40 @@
       stop: false,
       rows: []
     };
+
+    const allianceUids = [
+      "1257639560000724",
+      "1204517864000724",
+      "2287760229000724",
+      "1265028307000724",
+      "1483452105000724",
+      "1312490097000724",
+      "1037561440000724",
+      "1058087908000724",
+      "1748925527000724",
+      "1491143874000724",
+      "1124019547000724",
+      "1068855030000724",
+      "1175361499000724",
+      "1175575452000724",
+      "1026555772000724",
+      "1907277399000724",
+      "2287261772000724",
+      "1907277399000724",
+      "1226188148000724",
+      "1148708976000724",
+      "1667248429000724",
+      "1611634316000724",
+      "1272704168000724",
+      "1418030467000724",
+      "1014920197000724",
+      "1181969035000724",
+      "1704188473000724",
+      "1678603033000724",
+      "1980616185000724",
+      "1782749948000724",
+      "1540223204000724"
+    ];
 
     const api = {
       user: uid => `https://giftcenter.last-z.com/getcodeuser.php?uid=${encodeURIComponent(uid)}`,
@@ -582,6 +644,16 @@
     function parseLines(text, pattern) {
       return [...new Set(text.split(/\r?\n|,|，|\s+/).map(x => x.trim()).filter(Boolean))]
         .filter(x => !pattern || pattern.test(x));
+    }
+
+    function importAllianceUids() {
+      const merged = [...new Set([
+        ...parseLines(els.uids.value, /^\d{8,}$/),
+        ...allianceUids
+      ])];
+      els.uids.value = merged.join("\n");
+      els.uids.focus();
+      alert(t("importAllianceDone").replace("{count}", String(merged.length)));
     }
 
     function setEmpty() {
@@ -777,6 +849,8 @@
       a.click();
       URL.revokeObjectURL(url);
     });
+
+    els.importAllianceUids.addEventListener("click", importAllianceUids);
 
     els.authSubmit.addEventListener("click", checkPassword);
     els.authPassword.addEventListener("keydown", event => {
