@@ -602,8 +602,8 @@
     ];
 
     const api = {
-      user: uid => `https://giftcenter.last-z.com/getcodeuser.php?uid=${encodeURIComponent(uid)}`,
-      redeem: (uid, code) => `https://giftcenter.last-z.com/code.php?uid=${encodeURIComponent(uid)}&code=${encodeURIComponent(code)}`
+      user: uid => `https://store.last-z.com/getcodeuser.php?uid=${encodeURIComponent(uid)}`,
+      redeem: (uid, code) => `https://store.last-z.com/code.php?uid=${encodeURIComponent(uid)}&code=${encodeURIComponent(code)}`
     };
 
     function t(key) {
@@ -760,7 +760,7 @@
       render();
 
       try {
-        const userText = await requestTextWithRetry(api.user(uid), {}, retryTimes, delayMs);
+        const userText = await requestTextWithRetry(api.user(uid), { headers: { Usertoken: uid } }, retryTimes, delayMs);
         row.name = decodeName(userText);
         await sleep(delayMs);
 
