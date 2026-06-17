@@ -137,23 +137,6 @@
       gap: 10px;
       margin-top: 14px;
     }
-    .field-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      margin: 8px 0 4px;
-    }
-    .field-tools .btn {
-      min-height: 34px;
-      padding: 7px 11px;
-      font-size: 13px;
-    }
-    .field-note {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -237,66 +220,6 @@
       color: var(--muted);
       font-size: 13px;
     }
-    body.auth-locked {
-      overflow: hidden;
-    }
-    body.auth-locked header,
-    body.auth-locked main,
-    body.auth-locked footer {
-      filter: blur(4px);
-      pointer-events: none;
-      user-select: none;
-    }
-    .auth-gate {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background:
-        radial-gradient(circle at 72% 22%, rgba(201, 148, 34, .22), transparent 28%),
-        rgba(30, 36, 43, .78);
-      backdrop-filter: blur(6px);
-    }
-    .auth-gate.hidden {
-      display: none;
-    }
-    .auth-box {
-      width: min(440px, 100%);
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .28);
-      padding: 24px;
-    }
-    .auth-box h2 {
-      margin: 0 0 8px;
-      font-size: 24px;
-    }
-    .auth-box p {
-      margin: 0 0 14px;
-      color: var(--muted);
-    }
-    .auth-row {
-      display: flex;
-      gap: 10px;
-      align-items: stretch;
-    }
-    .auth-row input {
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-    }
-    .auth-row .btn {
-      min-width: 96px;
-    }
-    .auth-error {
-      min-height: 22px;
-      margin-top: 10px;
-      color: var(--red);
-      font-size: 14px;
-      font-weight: 900;
-    }
     @media (max-width: 860px) {
       .hero { padding: 22px 0; }
       .hero-panel { padding: 22px 18px; }
@@ -304,24 +227,10 @@
       .grid { grid-template-columns: 1fr; }
       .summary { grid-template-columns: repeat(2, 1fr); }
       h1 { font-size: 30px; }
-      .auth-row { flex-direction: column; }
     }
   </style>
 </head>
-<body class="auth-locked">
-  <div class="auth-gate" id="authGate" role="dialog" aria-modal="true" aria-labelledby="authTitle">
-    <div class="auth-box">
-      <div class="eyebrow">SSBH Access</div>
-      <h2 id="authTitle" data-i18n="authTitle">输入访问密码</h2>
-      <p data-i18n="authLead">这个领取助手暂时只给 SSBH 盟友和被邀请的玩家使用。</p>
-      <label for="authPassword" data-i18n="authLabel">访问密码</label>
-      <div class="auth-row">
-        <input id="authPassword" type="password" autocomplete="current-password" data-placeholder="authPlaceholder">
-        <button class="btn primary" id="authSubmit" type="button" data-i18n="authSubmit">确认</button>
-      </div>
-      <div class="auth-error" id="authError" aria-live="polite"></div>
-    </div>
-  </div>
+<body>
   <header data-site-nav></header>
   <main>
     <section class="hero">
@@ -348,10 +257,6 @@
 
           <label for="uids" data-i18n="uidLabel">UID / 游戏 ID</label>
           <textarea id="uids" spellcheck="false" data-placeholder="uidPlaceholder"></textarea>
-          <div class="field-tools">
-            <button class="btn" id="importAllianceUidsBtn" type="button" data-i18n="importAllianceUids">Import Alliance UIDs</button>
-            <span class="field-note" data-i18n="importAllianceUidsNote">Adds registered alliance UIDs and removes duplicates.</span>
-          </div>
 
           <label for="codes" data-i18n="codeLabel">Gift Code / 礼品码</label>
           <textarea id="codes" spellcheck="false" data-placeholder="codePlaceholder"></textarea>
@@ -428,12 +333,6 @@
   <script>
     const dict = {
       zh: {
-        authTitle: "输入访问密码",
-        authLead: "这个领取助手暂时只给 SSBH 盟友和被邀请的玩家使用。",
-        authLabel: "访问密码",
-        authPlaceholder: "请输入密码",
-        authSubmit: "确认",
-        authWrong: "密码不正确，请重新输入。",
         title: "礼品码批量领取助手",
         lead: "输入一个或多个 UID、一个或多个礼品码，点击领取后逐条显示角色名、礼品码和领取结果。适合帮盟友快速验证和领取。",
         formTitle: "填写信息",
@@ -448,9 +347,6 @@
         stopBtn: "停止",
         clearBtn: "清空结果",
         exportBtn: "导出结果",
-        importAllianceUids: "\u4e00\u952e\u5bfc\u5165\u8054\u76df UID",
-        importAllianceUidsNote: "\u5c06\u5df2\u767b\u8bb0\u7684\u8054\u76df\u6210\u5458 UID \u5408\u5e76\u5230\u8f93\u5165\u6846\uff0c\u5e76\u81ea\u52a8\u53bb\u91cd\u3002",
-        importAllianceDone: "\u5df2\u5bfc\u5165 {count} \u4e2a\u8054\u76df UID\uff0c\u5e76\u5b8c\u6210\u53bb\u91cd\u3002",
         resultTitle: "结果说明",
         noticeStrong: "提示：",
         noticeText: "领取结果以官方接口返回为准。常见状态：",
@@ -481,12 +377,6 @@
         csvHeaders: ["时间", "UID", "角色名", "礼品码", "领取情况", "详细返回"]
       },
       en: {
-        authTitle: "Enter Access Password",
-        authLead: "This redeem helper is currently for SSBH allies and invited players.",
-        authLabel: "Access Password",
-        authPlaceholder: "Enter password",
-        authSubmit: "Confirm",
-        authWrong: "Wrong password. Please try again.",
         title: "Gift Code Batch Redeem Helper",
         lead: "Enter one or more UIDs and one or more gift codes. The page will redeem them one by one and show the player name, code, status, and raw response.",
         formTitle: "Redeem Form",
@@ -501,9 +391,6 @@
         stopBtn: "Stop",
         clearBtn: "Clear Results",
         exportBtn: "Export Results",
-        importAllianceUids: "Import Alliance UIDs",
-        importAllianceUidsNote: "Adds registered alliance UIDs to the input box and removes duplicates.",
-        importAllianceDone: "Imported {count} alliance UIDs and removed duplicates.",
         resultTitle: "Result Notes",
         noticeStrong: "Note: ",
         noticeText: "Results come from the official API. Common statuses:",
@@ -542,7 +429,6 @@
       stop: document.getElementById("stopBtn"),
       clear: document.getElementById("clearBtn"),
       export: document.getElementById("exportBtn"),
-      importAllianceUids: document.getElementById("importAllianceUidsBtn"),
       delay: document.getElementById("delayMs"),
       retry: document.getElementById("retryTimes"),
       results: document.getElementById("results"),
@@ -550,15 +436,8 @@
       done: document.getElementById("doneCount"),
       ok: document.getElementById("okCount"),
       fail: document.getElementById("failCount"),
-      langButtons: document.querySelectorAll("[data-lang]"),
-      authGate: document.getElementById("authGate"),
-      authPassword: document.getElementById("authPassword"),
-      authSubmit: document.getElementById("authSubmit"),
-      authError: document.getElementById("authError")
+      langButtons: document.querySelectorAll("[data-lang]")
     };
-
-    const ACCESS_PASSWORD = "SSBH";
-    const AUTH_KEY = "lastzRedeemAuthOk";
 
     const state = {
       lang: localStorage.getItem("lastzRedeemLang") || "zh",
@@ -566,40 +445,6 @@
       stop: false,
       rows: []
     };
-
-    const allianceUids = [
-      "1257639560000724",
-      "1204517864000724",
-      "2287760229000724",
-      "1265028307000724",
-      "1483452105000724",
-      "1312490097000724",
-      "1037561440000724",
-      "1058087908000724",
-      "1748925527000724",
-      "1491143874000724",
-      "1124019547000724",
-      "1068855030000724",
-      "1175361499000724",
-      "1175575452000724",
-      "1026555772000724",
-      "1907277399000724",
-      "2287261772000724",
-      "1907277399000724",
-      "1226188148000724",
-      "1148708976000724",
-      "1667248429000724",
-      "1611634316000724",
-      "1272704168000724",
-      "1418030467000724",
-      "1014920197000724",
-      "1181969035000724",
-      "1704188473000724",
-      "1678603033000724",
-      "1980616185000724",
-      "1782749948000724",
-      "1540223204000724"
-    ];
 
     const api = {
       user: uid => `https://store.last-z.com/getcodeuser.php?uid=${encodeURIComponent(uid)}`,
@@ -625,35 +470,9 @@
       render();
     }
 
-    function unlockPage() {
-      document.body.classList.remove("auth-locked");
-      els.authGate.classList.add("hidden");
-      sessionStorage.setItem(AUTH_KEY, "1");
-    }
-
-    function checkPassword() {
-      if (els.authPassword.value.trim() === ACCESS_PASSWORD) {
-        els.authError.textContent = "";
-        unlockPage();
-        return;
-      }
-      els.authError.textContent = t("authWrong");
-      els.authPassword.select();
-    }
-
     function parseLines(text, pattern) {
       return [...new Set(text.split(/\r?\n|,|，|\s+/).map(x => x.trim()).filter(Boolean))]
         .filter(x => !pattern || pattern.test(x));
-    }
-
-    function importAllianceUids() {
-      const merged = [...new Set([
-        ...parseLines(els.uids.value, /^\d{8,}$/),
-        ...allianceUids
-      ])];
-      els.uids.value = merged.join("\n");
-      els.uids.focus();
-      alert(t("importAllianceDone").replace("{count}", String(merged.length)));
     }
 
     function setEmpty() {
@@ -850,23 +669,11 @@
       URL.revokeObjectURL(url);
     });
 
-    els.importAllianceUids.addEventListener("click", importAllianceUids);
-
-    els.authSubmit.addEventListener("click", checkPassword);
-    els.authPassword.addEventListener("keydown", event => {
-      if (event.key === "Enter") checkPassword();
-    });
-
     els.langButtons.forEach(btn => {
       btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
     });
 
     applyLanguage(state.lang);
-    if (sessionStorage.getItem(AUTH_KEY) === "1") {
-      unlockPage();
-    } else {
-      els.authPassword.focus();
-    }
   </script>
 </body>
 </html>
